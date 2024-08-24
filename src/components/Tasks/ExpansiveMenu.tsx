@@ -14,12 +14,12 @@ export function ExpansiveMenu({ taskId }: expansiveMenuProps) {
   return (
     <Menu>
       <MenuButton> <EllipsisHorizontalIcon className='text-gray-700' width={25} height={25} /> </MenuButton>
-      <MenuItems anchor="bottom" className='flex flex-col gap-3 bg-white p-6 rounded-md'>
+      <MenuItems anchor="bottom" className='flex flex-col gap-3 items-start justify-start bg-white p-6 rounded-md'>
         <MenuItem>
           <button onClick={()=> router.push(`?taskId=${taskId}&viewTask=true`)} className='text-gray-800 font-medium hover:text-gray-600'>Ver tarea</button>
         </MenuItem>
         <MenuItem>
-          <button className='text-gray-800 font-medium hover:text-gray-600'>Editar tarea</button>
+          <button onClick={()=> router.push(`?taskId=${taskId}&editTask=true`)} className='text-gray-800 font-medium hover:text-gray-600'>Editar tarea</button>
         </MenuItem>
         <MenuItem>
           <a className="block data-[focus]:bg-blue-100" href="/license">

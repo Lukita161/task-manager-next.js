@@ -33,6 +33,7 @@ export const useFetchTaskById = (taskId: Task['_id'])=> {
             }
         }
         fetchTask()
+        setLoading(false)
     },[taskId])
     return { task, loading }
 }

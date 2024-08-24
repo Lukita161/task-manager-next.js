@@ -1,5 +1,6 @@
 import { NavMenu } from "@/src/components/NavMenu";
 import CreateTaskModal from "@/src/components/Tasks/CreateTaskModal";
+import EditTaskModal from "@/src/components/Tasks/EditTaskModal";
 import { TaskDetail } from "@/src/components/Tasks/TaskDetail";
 import ViewTaskModal from "@/src/components/Tasks/ViewTaskModal";
 import { FloatingButton } from "@/src/components/UI/FloatingButton";
@@ -30,6 +31,7 @@ export default async function Home() {
       </div>
       <CreateTaskModal />
       <ViewTaskModal />
+      <EditTaskModal />
     </>
   );
 }

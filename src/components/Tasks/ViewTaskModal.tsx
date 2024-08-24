@@ -31,11 +31,11 @@ export default function ViewTaskModal() {
       >
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
           <DialogPanel className="max-w-lg lg:w-[100vw] space-y-4 border bg-white p-12">
-            <DialogTitle className="font-black text-gray-800 text-2xl border-b border-gray-300 uppercase mb-8 text-center"> <h1>{ task.name }</h1> </DialogTitle>
+            <DialogTitle className="font-black text-gray-800 text-3xl border-b border-gray-300 uppercase mb-8 text-center"> <h1>{ task.name }</h1> </DialogTitle>
             <Description>
               <div>
                 <h3 className="text-gray-700 font-medium">Descripcion: <span className="text-gray-800 font-bold">{task.description}</span> </h3>
-                <h4>Categoria: <span>{ translateCategory(task.category) }</span></h4>
+                <h4 className="text-gray-700 font-medium">Categoria: <span className="text-gray-800 font-bold">{ translateCategory(task.category) }</span></h4>
               </div>
             </Description>
           </DialogPanel>
