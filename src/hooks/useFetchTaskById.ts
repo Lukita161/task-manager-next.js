@@ -11,7 +11,8 @@ export const useFetchTaskById = (taskId: Task['_id'])=> {
         _id: '',
         name: "",
         description: "",
-        completed: false||true
+        completed: false||true,
+        category: ''
     })
     const [loading, setLoading] = useState(false)
 
@@ -21,8 +22,12 @@ export const useFetchTaskById = (taskId: Task['_id'])=> {
             setLoading(true)
             try {
                 const task = await getTaskbyId(taskId)
-                console.log(task)
-                setLoading(false)
+                const response = TaskSchema.safeParse(task)
+                if(response.success) {
+                    setTask(response.data)
+                    setLoading(false)
+                }
+                
             } catch {
                 console.log('Algo esta mal')
             }

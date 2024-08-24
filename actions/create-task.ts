@@ -3,6 +3,7 @@
 import connectDb from "@/src/db"
 import Task from "@/src/models/Tasks"
 import { CreateTasksFormSchema } from "@/src/schemas"
+import { revalidatePath } from "next/cache"
 
 
 export const createTask = async(data: unknown)=> {
@@ -16,8 +17,10 @@ export const createTask = async(data: unknown)=> {
         await connectDb()
         await Task.create({
             name: response.data.name,
-            description: response.data.description
+            description: response.data.description,
+            category: response.data.category
         })
+        revalidatePath('/')
     } catch (error) {
         console.log(error)
         return

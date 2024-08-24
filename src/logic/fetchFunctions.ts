@@ -18,8 +18,9 @@ export const GetAllTasks = async()=> {
 
 export const getTaskbyId = async(taskId: Task['_id'])=> {
     try {
-        const task = await axios(`http://localhost:3000/tasks/${taskId}/api`)
-        const response = TaskSchema.safeParse(task)
+        const url = `http://localhost:3000/tasks/searchTask/api?taskId=${taskId}`
+        const { data } = await axios(url)
+        const response = TaskSchema.safeParse(data)
         if(response.success) {
             return response.data
         }

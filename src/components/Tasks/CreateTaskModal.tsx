@@ -8,6 +8,9 @@ import {
 } from "@headlessui/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { category } from "@/src/data/category";
+import { createTask } from "@/actions/create-task";
+import { toast } from "react-toastify";
+
 
 
 export default function CreateTaskModal() {
@@ -16,6 +19,22 @@ export default function CreateTaskModal() {
 	const isActive = params.get('createModal')
 
 	const closeModal = ()=> router.push('/')
+
+  const handleCreateTask = async(formData: FormData)=> {
+    const data = {
+      name: formData.get('Name'),
+      description: formData.get('Description'),
+      category: formData.get('Categoria')
+    }
+    const task = await createTask(data)
+    if(task?.errors) {
+      task.errors.forEach(issue => {
+        toast.error(issue.message)
+      })
+    }
+    toast.success('Tarea creada correctamente')
+    router.push('/')
+  }
 
   return (
     <>
@@ -30,12 +49,12 @@ export default function CreateTaskModal() {
             <Description>
 
             </Description>
-            <form className="flex flex-col gap-2 ">
+            <form action={handleCreateTask} className="flex flex-col gap-2 ">
                     <label className="font-medium text-gray-600" htmlFor="Name">Nombre de la tarea: </label>
                     <input className="w-full mb-6 shadow-sm p-4 border-b rounded bg-gray-100 border-gray-400 outline-none focus:border-b-2 focus:bg-whited/40 transition-colors" type="text" name="Name" placeholder="Nombre tarea" />
 
                     <label className="font-medium  text-gray-600" htmlFor="Description">Descripción de la tarea: </label>
-                    <input className="w-full mb-6 shadow-sm p-4 border-b rounded bg-gray-100 bg-none border-gray-400 outline-none focus:border-b-2 focus:bg-whited/40 transition-colors" type="text" name="Description" placeholder="Descripcion tarea" />
+                    <input className="w-full mb-6 shadow-sm p-4 border-b rounded bg-gray-100 bg-none border-gray-400 outline-none focus:border-b-2 focus:bg-whited/40 transition-colors" type="Description" name="Description" placeholder="Descripcion tarea" />
 
                     <label className="font-medium  text-gray-600" htmlFor="Categoria">Categoria: </label>
                     <select className="w-full shadow-sm p-4 border-b rounded bg-gray-100 bg-none border-gray-400 outline-none focus:border-b-2 focus:bg-whited/40 transition-colors" name="Categoria">
