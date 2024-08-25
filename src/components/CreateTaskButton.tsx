@@ -10,6 +10,6 @@ export const CreateTaskButton = ()=> {
     }
   
     return (
-        <button onClick={handleClick} className="p-4 bg-secundary/80 font-black uppercase text-sm rounded-md text-white">Agregar Tarea</button>
+        <button onClick={handleClick} className="p-4 bg-secundary/80 font-black uppercase text-sm rounded-md text-white dark:text-blacked dark:bg-whited">Agregar Tarea</button>
     )
 }

@@ -1,5 +1,6 @@
 import { NavMenu } from "@/src/components/NavMenu";
 import CreateTaskModal from "@/src/components/Tasks/CreateTaskModal";
+import DeleteTaskModal from "@/src/components/Tasks/DeleteTaskModal";
 import EditTaskModal from "@/src/components/Tasks/EditTaskModal";
 import { TaskDetail } from "@/src/components/Tasks/TaskDetail";
 import ViewTaskModal from "@/src/components/Tasks/ViewTaskModal";
@@ -16,7 +17,7 @@ export default async function Home() {
           <NavMenu />
         </header>
         {tasks?.length ? (
-          <section className="mx-auto my-auto overflow-y-auto h-[30rem] w-6/12 shadow-2xl rounded-lg bg-[#d9c5b2] p-6">
+          <section className="mx-auto my-auto overflow-y-auto h-[30rem] w-6/12 shadow-2xl rounded-lg bg-[#d9c5b2] dark:bg-secundary dark:shadow-none p-6">
             <h1 className="text-3xl font-black text-terciary text-center mb-4">
               Tareas diarias:{" "}
             </h1>
@@ -32,6 +33,7 @@ export default async function Home() {
       <CreateTaskModal />
       <ViewTaskModal />
       <EditTaskModal />
+      <DeleteTaskModal />
     </>
   );
 }

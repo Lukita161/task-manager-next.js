@@ -5,17 +5,24 @@ import { CalendarDaysIcon } from "@heroicons/react/24/outline"
 import { Cog8ToothIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useState } from "react"
 
 export const NavMenu = ()=> {
   const params = usePathname()
+  const [darkMode, setDarkMode] = useState(false)
   
   const linkActive = (href: string)=> href === params
+  const handleClick = ()=> {
+    setDarkMode(!darkMode)
+    document.documentElement.classList.toggle('dark')
+  }
 
     return (
-        <nav className="flex flex-col gap-8 items-center justify-center w-30 md:w-20 lg:w-20 h-screen bg-blacked/90">
-        <Link className={`flex items-center w-full justify-center p-1 ${linkActive('/') && 'border-l-4 border-whited' }`} href={"/"}> <ClipboardDocumentListIcon color="white" width={35} height={35} /> </Link>
-        <Link className={`flex items-center w-full justify-center p-1 ${linkActive('/week') && 'border-l-4 border-whited' }`} href={"/week"}> <CalendarDaysIcon color="white" width={30} height={30} /> </Link>
-        <Link className={`flex items-center w-full justify-center p-1 ${linkActive('/setting') && 'border-l-4 border-whited' }`} href={"/setting"}> <Cog8ToothIcon color="white" width={30} height={30} /> </Link>
+        <nav className="flex flex-col gap-8 items-center justify-center w-30 md:w-20 lg:w-20 h-screen bg-blacked/90 dark:bg-terciary">
+        <Link className={`flex items-center w-full justify-center p-1 ${linkActive('/') && 'border-l-4 border-whited dark:border-gray-300' }`} href={"/"}> <ClipboardDocumentListIcon className="text-whited dark:text-gray-300" width={35} height={35} /> </Link>
+        <Link className={`flex items-center w-full justify-center p-1 ${linkActive('/week') && 'border-l-4 border-whited dark:border-gray-300' }`} href={"/week"}> <CalendarDaysIcon className="text-whited dark:text-gray-300" width={30} height={30} /> </Link>
+        <Link className={`flex items-center w-full justify-center p-1 ${linkActive('/setting') && 'border-l-4 border-whited dark:border-gray-300' }`} href={"/setting"}> <Cog8ToothIcon className="text-whited dark:text-gray-300" width={30} height={30} /> </Link>
+        <button onClick={handleClick} className="w-full text-white">Dark mode</button>
       </nav>
     )
 }

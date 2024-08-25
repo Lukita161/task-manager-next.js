@@ -22,9 +22,7 @@ export function ExpansiveMenu({ taskId }: expansiveMenuProps) {
           <button onClick={()=> router.push(`?taskId=${taskId}&editTask=true`)} className='text-gray-800 font-medium hover:text-gray-600'>Editar tarea</button>
         </MenuItem>
         <MenuItem>
-          <a className="block data-[focus]:bg-blue-100" href="/license">
-            License
-          </a>
+          <button onClick={()=> router.push(`?taskId=${taskId}&deleteTask=true`)} className='text-red-600 font-medium hover:text-red-400'>Eliminar</button>
         </MenuItem>
       </MenuItems>
     </Menu>

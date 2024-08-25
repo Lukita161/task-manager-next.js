@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-200`}>{children}
+      <body className={`${inter.className} bg-gray-200 dark:bg-[#191919]/95`}>{children}
         <ToastNotification  />
       </body>
     </html>
