@@ -1,6 +1,6 @@
 "use client";
 
-import { updateStatus } from "@/actions/update-task-status";
+import { updateStatus } from "@/actions/tasks/update-task-status";
 import { Task } from "@/src/types";
 import { toast } from "react-toastify";
 import { ExpansiveMenu } from "./ExpansiveMenu";

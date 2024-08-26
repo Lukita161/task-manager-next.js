@@ -8,7 +8,7 @@ import {
 } from "@headlessui/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { category } from "@/src/data/category";
-import { createTask } from "@/actions/create-task";
+import { createTask } from "@/actions/tasks/create-task";
 import { toast } from "react-toastify";
 
 

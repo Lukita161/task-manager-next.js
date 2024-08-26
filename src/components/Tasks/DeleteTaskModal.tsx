@@ -1,6 +1,6 @@
 "use client"
 
-import { deleteTask } from "@/actions/delete-task";
+import { deleteTask } from "@/actions/tasks/delete-task";
 import {
   Description,
   Dialog,

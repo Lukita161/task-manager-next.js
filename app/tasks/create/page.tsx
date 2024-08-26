@@ -1,6 +1,6 @@
 "use client"
 
-import { createTask } from "@/actions/create-task";
+import { createTask } from "@/actions/tasks/create-task";
 import { GoBackButton } from "@/src/components/GoBackButton";
 import { ToastNotification } from "@/src/components/UI/ToastNotification";
 import { CreateTasksFormSchema } from "@/src/schemas";

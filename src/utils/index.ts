@@ -1,0 +1,1 @@
+export const genereteRandomToken = ()=> Math.floor(100000 * Math.random()).toString()

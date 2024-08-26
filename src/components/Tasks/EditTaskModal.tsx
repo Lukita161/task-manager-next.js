@@ -9,7 +9,7 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { category } from "@/src/data/category";
 import { useFetchTaskById } from "@/src/hooks/useFetchTaskById";
-import { EditTask } from "@/actions/edit-task";
+import { EditTask } from "@/actions/tasks/edit-task";
 import { toast } from "react-toastify";
 
 export default function EditTaskModal() {
