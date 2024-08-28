@@ -1,4 +1,4 @@
-import mongoose, { model, Schema } from "mongoose"
+import mongoose, { model, Schema, Types } from "mongoose"
 import { boolean } from "zod"
 
 interface UserI {
@@ -25,12 +25,17 @@ const UserSchema : Schema = new Schema({
     },
     token: {
         type: String,
-        expires: 600
     },
     confirmed: {
         type: Boolean,
         default: false
-    }
+    },
+    tasks: [
+        {
+            type: Types.ObjectId,
+            ref: 'Task'
+        }
+    ]
 }, {timestamps: true})
 
 const User = mongoose.models.User || model<UserI>('User', UserSchema)

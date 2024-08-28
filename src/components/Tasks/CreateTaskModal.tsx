@@ -6,19 +6,20 @@ import {
   DialogPanel,
   DialogTitle,
 } from "@headlessui/react";
+import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { category } from "@/src/data/category";
 import { createTask } from "@/actions/tasks/create-task";
 import { toast } from "react-toastify";
 
-
-
 export default function CreateTaskModal() {
+
 	const router = useRouter()
 	const params = useSearchParams()
 	const isActive = params.get('createModal')
 
 	const closeModal = ()=> router.push('/')
+
 
   const handleCreateTask = async(formData: FormData)=> {
     const data = {

@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, models, mongo } from "mongoose"
+import mongoose, { Schema, Types, model, models, mongo } from "mongoose"
 
 interface TaskI {
     name: string
@@ -21,6 +21,9 @@ const TaskSchema : Schema = new Schema({
     completed: {
         type: Boolean,
         default: false
+    },
+    createdBy: {
+        type: Types.ObjectId
     },
     completedAt: {
         type: Date,

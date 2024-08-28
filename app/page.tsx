@@ -5,13 +5,15 @@ import EditTaskModal from "@/src/components/Tasks/EditTaskModal";
 import { TaskDetail } from "@/src/components/Tasks/TaskDetail";
 import ViewTaskModal from "@/src/components/Tasks/ViewTaskModal";
 import { FloatingButton } from "@/src/components/UI/FloatingButton";
-import { GetAllTasks } from "@/src/logic/fetchFunctions";
+import { getTaskByUser } from "@/src/logic/fetchFunctions";
+import { getServerSession } from "next-auth";
 
 export default async function Home() {
-  const tasks = await GetAllTasks();
+  const tasks = await getTaskByUser();
 
   return (
     <>
+      
       <div className="flex">
         <header>
           <NavMenu />

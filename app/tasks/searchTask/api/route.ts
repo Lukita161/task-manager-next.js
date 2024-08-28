@@ -14,6 +14,6 @@ export const GET = async(req: NextRequest)=> {
         }
         return Response.json(data)
     } catch (error) {
-        console.log(error)
+        return Response.json({error: "No se ha encontrado la tarea"}, {status: 404})
     }
 } 

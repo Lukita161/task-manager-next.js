@@ -1,12 +1,16 @@
-
+"use server"
 
 import axios from "axios"
 import { TaskSchema, TasksSchema } from "../schemas"
 import { Task } from "../types"
+import { getServerSession } from 'next-auth'
 
-export const GetAllTasks = async()=> {
+
+export const getTaskByUser = async()=> {
     try {
-        const tasks = await axios('http://localhost:3000/tasks/api')
+        const session = await getServerSession()
+
+        const tasks = await axios(`http://localhost:3000/tasks/api?userEmail=${session?.user?.email}`)
         const response = TasksSchema.safeParse(tasks.data)
         if(response.success) {
             return response.data
@@ -25,6 +29,6 @@ export const getTaskbyId = async(taskId: Task['_id'])=> {
             return response.data
         }
     } catch (error) {
-        console.log(error)
+        //console.log(error)
     }
 }

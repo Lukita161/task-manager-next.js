@@ -1,3 +1,5 @@
+"use server"
+
 import connectDb from "@/src/db"
 import User from "@/src/models/User"
 
@@ -7,6 +9,9 @@ export const confirmUser = async(token: string)=> {
         const user = await User.findOne({token})
         if(!user) {
             const error = new Error('Token no valido')
+            return {
+                errors: error.message
+            }
         }
         user.confirmed = true
         user.token = ''
