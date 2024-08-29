@@ -13,7 +13,7 @@ export function ExpansiveMenu({ taskId }: expansiveMenuProps) {
   const router = useRouter()
   return (
     <Menu>
-      <MenuButton> <EllipsisHorizontalIcon className='text-gray-700' width={25} height={25} /> </MenuButton>
+      <MenuButton> <EllipsisHorizontalIcon className='text-gray-700 dark:text-white' width={25} height={25} /> </MenuButton>
       <MenuItems anchor="bottom" className='flex flex-col gap-3 items-start justify-start bg-white p-6 rounded-md'>
         <MenuItem>
           <button onClick={()=> router.push(`?taskId=${taskId}&viewTask=true`)} className='text-gray-800 font-medium hover:text-gray-600'>Ver tarea</button>

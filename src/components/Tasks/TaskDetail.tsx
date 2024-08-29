@@ -5,8 +5,10 @@ import { Task } from "@/src/types";
 import { toast } from "react-toastify";
 import { ExpansiveMenu } from "./ExpansiveMenu";
 import { categoryOptionalStyle } from "@/src/data/category";
+import { useRouter } from "next/navigation";
 
 export const TaskDetail = ({ task }: { task: Task }) => {
+  const router = useRouter()
   const handleChange = async () => {
     await updateStatus(task._id);
     if (task.completed === true) {
@@ -25,14 +27,15 @@ export const TaskDetail = ({ task }: { task: Task }) => {
         defaultChecked={task.completed}
         onChange={handleChange}
         type="checkbox"
-        className="ml-2 w-4 h-4 text-red-500 rounded-full"
-      ></input>
+        className="ml-2 w-4 h-4"
+      />
       <div className="flex w-full justify-between items-center">
         <div className="flex flex-col">
           <h1
-            className={`${
+            onClick={()=> router.push(`?taskId=${task._id}&viewTask=true`)}
+            className={`hover:underline hover:cursor-pointer ${
               task.completed ? "line-through" : ""
-            }  text-xl font-black text-gray-600`}
+            }  text-xl font-black text-gray-600 dark:text-gray-200`}
           >
             {" "}
             {task.name}{" "}
@@ -40,7 +43,7 @@ export const TaskDetail = ({ task }: { task: Task }) => {
           <h1
             className={`${
               task.completed ? "line-through" : ""
-            }  text-lg font-medium text-gray-500`}
+            }  text-lg font-medium text-gray-500 dark:text-gray-200`}
           >
             {" "}
             {task.description}{" "}
