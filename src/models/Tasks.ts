@@ -23,7 +23,8 @@ const TaskSchema : Schema = new Schema({
         default: false
     },
     createdBy: {
-        type: Types.ObjectId
+        type: Types.ObjectId,
+        ref: 'User'
     },
     completedAt: {
         type: Date,

@@ -22,13 +22,17 @@ export const POST = async(req: Request)=> {
 export const GET = async(req: NextRequest)=> {
     await connectDb()
     try {
-        const params = req.nextUrl.searchParams
-        const userEmail = params.get('userEmail')
+        const authorizationHeader = req.headers;
+        if (!authorizationHeader) {
+            return Response.json({ error: 'Unauthorized' }, {status: 404});
+        }
+
+        const userEmail = authorizationHeader.get('authorization')?.split(' ')[1]
         const userInfo = await User.findOne({email: userEmail})
         if (!userInfo) {
             return new Response('User not found', { status: 404 });
           }
-        const data = await Task.find({createdBy: userInfo._id})
+        const data = await Task.find({createdBy: userInfo._id}).select('_id name description completed category')
         return Response.json(data)
     } catch (error) {
         return Response.json({message: 'Error'}, {status: 404})
