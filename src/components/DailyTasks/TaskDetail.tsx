@@ -17,7 +17,6 @@ export const TaskDetail = ({ task }: { task: Task }) => {
       toast.success("Tarea completada");
     }
   };
-
   const borderColor = categoryOptionalStyle(task.category)
 
   if(task) return (
@@ -27,7 +26,7 @@ export const TaskDetail = ({ task }: { task: Task }) => {
         defaultChecked={task.completed}
         onChange={handleChange}
         type="checkbox"
-        className="ml-2 w-4 h-4"
+        className="ml-2 mr-2 w-4 h-4"
       />
       <div className="flex w-full justify-between items-center">
         <div className="flex flex-col">
@@ -46,7 +45,7 @@ export const TaskDetail = ({ task }: { task: Task }) => {
             }  text-lg font-medium text-gray-500 dark:text-gray-200`}
           >
             {" "}
-            {task.description}{" "}
+            {task.description.length>70 ? task.description.slice(0,70)+'...' : task.description}{" "}
           </h1>
         </div>
         <ExpansiveMenu taskId={task._id} />

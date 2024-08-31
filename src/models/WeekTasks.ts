@@ -1,15 +1,17 @@
 import mongoose, { Schema, Types, model, models, mongo } from "mongoose"
 
-interface TaskI {
+interface WeekTasksI {
     name: string
     description: string
     completed: boolean
+    createdBy: Date
     completedAt: Date
     category: string
     endDate: Date
+    day: string
 }
 
-const TaskSchema : Schema = new Schema({
+const WeekTasksSchema : Schema = new Schema({
     name: {
         type: String,
         required: true,
@@ -24,7 +26,7 @@ const TaskSchema : Schema = new Schema({
     },
     createdBy: {
         type: Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
     },
     completedAt: {
         type: Date,
@@ -34,9 +36,13 @@ const TaskSchema : Schema = new Schema({
     },
     endDate: {
         type: Date,
-    }
+    },
+    day: {
+        type: String,
+        required: true
+    },
 }, {timestamps: true})
 
-const Task = mongoose.models.Task || model<TaskI>("Task", TaskSchema)
+const WeekTask = mongoose.models.WeekTask || mongoose.model<WeekTasksI>('WeekTask', WeekTasksSchema)
 
-export default Task
+export default WeekTask

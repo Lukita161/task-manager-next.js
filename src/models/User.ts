@@ -33,7 +33,7 @@ const UserSchema : Schema = new Schema({
     tasks: [
         {
             type: Types.ObjectId,
-            ref: 'Task'
+            ref: 'DailyTask'
         }
     ]
 }, {timestamps: true})

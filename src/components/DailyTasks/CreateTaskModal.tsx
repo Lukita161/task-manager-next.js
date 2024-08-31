@@ -16,7 +16,7 @@ export default function CreateTaskModal() {
 
 	const router = useRouter()
 	const params = useSearchParams()
-	const isActive = params.get('createModal')
+	const isActive = params.get('createTaskModal')
 
 	const closeModal = ()=> router.push('/')
 

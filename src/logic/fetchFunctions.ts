@@ -4,6 +4,7 @@ import axios from "axios"
 import { TaskSchema, TasksSchema } from "../schemas"
 import { Task } from "../types"
 import { getServerSession } from 'next-auth'
+import { WeekDay } from "../models/WeekDays"
 
 
 export const getTaskByUser = async()=> {
@@ -50,3 +51,18 @@ export const getTaskbyId = async(taskId: Task['_id'])=> {
         console.log(error)
     }
 }
+
+export async function createWeekdays() {
+    const weekdays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+  
+    try {
+      await WeekDay.deleteMany({}); // Delete existing weekdays (if any)
+      await WeekDay.insertMany(weekdays.map(day => ({ day })));
+      console.log('Weekdays created successfully!');
+    } catch (error) {
+      console.error('Error creating weekdays:', error);
+    }
+  }
+  
+  // Call the function to create weekdays
+  createWeekdays();

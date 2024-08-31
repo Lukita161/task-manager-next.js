@@ -16,7 +16,6 @@ export const CreateTasksFormSchema = z.object({
     description: z.string().min(1, {message: 'La descripcion no puede ir vacia'}),
     category: z.string().toLowerCase()
 })
-
 export const TaskSchema = z.object({
     _id: z.string(),
     name: z.string(),
@@ -25,4 +24,22 @@ export const TaskSchema = z.object({
     category: z.string()
 })
 
+export const CreateWeekTaskFormSchema = z.object({
+    name: z.string().min(1, {message: 'El nombre no puede estar vacio'}),
+    description: z.string().min(1, {message: 'La descripcion es obligatoria'}),
+    category: z.string().toLowerCase(),
+    day: z.string().toLowerCase()
+})
+
 export const TasksSchema = z.array(TaskSchema)
+
+export const WeekTaskSchema = z.object({
+    _id: z.string(),
+    name: z.string(),
+    description: z.string(),
+    category: z.string(),
+    day: z.string(),
+    completed: z.boolean()
+})
+
+export const WeekTasksSchema = z.array(WeekTaskSchema)

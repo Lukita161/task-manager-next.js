@@ -1,24 +1,25 @@
 import { NavMenu } from "@/src/components/NavMenu";
-import CreateTaskModal from "@/src/components/Tasks/CreateTaskModal";
-import DeleteTaskModal from "@/src/components/Tasks/DeleteTaskModal";
-import EditTaskModal from "@/src/components/Tasks/EditTaskModal";
-import { TaskDetail } from "@/src/components/Tasks/TaskDetail";
-import ViewTaskModal from "@/src/components/Tasks/ViewTaskModal";
+import CreateTaskModal from "@/src/components/DailyTasks/CreateTaskModal";
+import DeleteTaskModal from "@/src/components/DailyTasks/DeleteTaskModal";
+import EditTaskModal from "@/src/components/DailyTasks/EditTaskModal";
+import { TaskDetail } from "@/src/components/DailyTasks/TaskDetail";
+import ViewTaskModal from "@/src/components/DailyTasks/ViewTaskModal";
 import { FloatingButton } from "@/src/components/UI/FloatingButton";
-import { getTaskByUser } from "@/src/logic/fetchFunctions";
+import { createWeekdays, getTaskByUser } from "@/src/logic/fetchFunctions";
 
 export default async function Home() {
   const tasks = await getTaskByUser();
 
+  //await createWeekdays()
+
   return (
     <>
-      
       <div className="flex">
         <header>
           <NavMenu />
         </header>
         {tasks?.length ? (
-          <section className="mx-auto my-auto overflow-y-auto h-[30rem] w-6/12 shadow-2xl rounded-lg bg-[#d9c5b2] dark:bg-[#5c5c5c] dark:shadow-none p-6">
+          <section className="mx-auto my-auto overflow-y-auto h-[34rem] w-8/12 shadow-2xl rounded-lg bg-[#d9c5b2] dark:bg-[#5c5c5c] dark:shadow-none p-6">
             <h1 className="text-3xl font-black text-terciary text-center mb-4 dark:text-whited">
               Tareas diarias:{" "}
             </h1>
