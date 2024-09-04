@@ -26,11 +26,3 @@ export const categoryOptionalStyle = (value: string) => {
         case('health') : return 'border-b-[#5be356]'
     }}
 
-export const translateCategory = (value: Task['category']) => {
-    switch (value) {
-        case('general') : return 'General'
-        case('job') : return 'Trabajo'
-        case('study') : return 'Estudio'
-        case('health') : return 'Salud'
-    }
-}

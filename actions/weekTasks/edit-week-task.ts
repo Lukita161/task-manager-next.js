@@ -1,20 +1,20 @@
 "use server"
 
 import connectDb from "@/src/db";
-import DailyTask from "@/src/models/DailyTasks";
-import { CreateTasksFormSchema } from "@/src/schemas";
+import WeekTask from "@/src/models/WeekTasks";
+import { CreateWeekTaskFormSchema } from "@/src/schemas";
 import { Task as TaskType } from "@/src/types";
 import { revalidatePath } from "next/cache";
 
-export const EditTask = async(id: TaskType['_id'], data: unknown)=> {
+export const EditWeekTask = async(id: TaskType['_id'], data: unknown)=> {
     await connectDb()
     try {
-        const task = await DailyTask.findById(id)
+        const task = await WeekTask.findById(id)
         if(!task) {
             const error = new Error('La tarea no existe')
             return error
         }
-        const response = CreateTasksFormSchema.safeParse(data)
+        const response = CreateWeekTaskFormSchema.safeParse(data)
         if(!response.success) {
             return {
                 errors: response.error.issues
@@ -23,6 +23,9 @@ export const EditTask = async(id: TaskType['_id'], data: unknown)=> {
         task.name = response.data.name
         task.description = response.data.description
         task.category = response.data.category
+        task.day = response.data.day
+        task.startTime = response.data.startTime
+        task.endTime = response.data.endTime
         await task.save()
         revalidatePath('/week')
     } catch (error) {

@@ -10,11 +10,11 @@ export const GET = async(req: Request)=> {
             return Response.json({ error: 'Unauthorized' }, {status: 404});
         }
         const userEmail = authorizationHeader.get('authorization')?.split(' ')[1]
-        const userInfo = await User.findOne({email: userEmail})
+        const userInfo = await User.findOne({email: userEmail}).select('_id')
         if (!userInfo) {
             return new Response('User not found', { status: 404 });
           }
-        const data = await WeekTask.find({createdBy: userInfo._id}).select('_id name description category completed day')
+        const data = await WeekTask.find({createdBy: userInfo._id}).select('_id name description category completed day startTime endTime').sort({startTime: 'asc'})
         return Response.json(data)
     } catch (error) {
         return Response.json({error: 'Algo ha fallada'}, {status: 500})

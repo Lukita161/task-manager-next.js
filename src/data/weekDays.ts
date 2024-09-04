@@ -1,30 +1,30 @@
 export const weekDays = [
     {
         name: 'Lunes',
-        value: 'Monday',
+        value: 'monday',
     },
     {
         name: 'Martes',
-        value: 'Tuesday',
+        value: 'tuesday',
     },
     {
         name: 'Miércoles',
-        value: 'Wednesday'
+        value: 'wednesday'
     },
     {
         name: 'Jueves',
-        value: 'Thursday'
+        value: 'thursday'
     },
     {
         name: 'Viernes',
-        value: 'Friday',
+        value: 'friday',
     },
     {
         name: 'Sabado',
-        value: 'Saturday'
+        value: 'saturday'
     },
     {
         name: 'Domingo',
-        value: 'Sunday'
+        value: 'sunday'
     }
 ]

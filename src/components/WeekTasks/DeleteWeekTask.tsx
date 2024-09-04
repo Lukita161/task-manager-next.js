@@ -1,6 +1,7 @@
 "use client"
 
 import { deleteTask } from "@/actions/tasks/delete-task";
+import { deleteWeekTask } from "@/actions/weekTasks/delete-week-task";
 import {
   Description,
   Dialog,
@@ -11,21 +12,20 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
 
 // En base a los params llamamos a nuestra DB
-export default function DeleteTaskModal() {
+export default function DeleteWeekTaskModal() {
 	const router = useRouter()
 	const params = useSearchParams()
-	const isActive = params.get('deleteTask')
+	const isActive = params.get('deleteWeekTask')
     const taskId = params.get('taskId')!
 
     const handleAction = async()=> {
-        await deleteTask(taskId)
+        await deleteWeekTask(taskId)
         toast.success('Eliminada correctamente')
-        router.push('/')
+        router.push('/week')
     }
-	const closeModal = ()=> router.push('/')
+	const closeModal = ()=> router.push('/week')
 
 return (
-    <>
       <Dialog
         open={Boolean(isActive)}
         onClose={closeModal}
@@ -50,6 +50,5 @@ return (
           </DialogPanel>
         </div>
       </Dialog>
-    </>
   );
 }

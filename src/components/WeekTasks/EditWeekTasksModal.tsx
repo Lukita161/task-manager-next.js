@@ -1,41 +1,59 @@
 "use client";
 
 import {
-  Description,
-  Dialog,
-  DialogPanel,
-  DialogTitle,
+    Description,
+    Dialog,
+    DialogPanel,
+    DialogTitle,
 } from "@headlessui/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { category } from "@/src/data/category";
-import { useFetchTaskById } from "@/src/hooks/useFetchTaskById";
-import { EditTask } from "@/actions/tasks/edit-task";
+import { EditWeekTask } from "@/actions/weekTasks/edit-week-task";
 import { toast } from "react-toastify";
+import TimePicker from 'react-time-picker';
+import 'react-time-picker/dist/TimePicker.css';
+import { useFetchWeekTaskById } from "@/src/hooks/useFetchWeekTaskById";
+import { useEffect, useState } from "react";
+import { weekDays } from "@/src/data/weekDays";
+import { dayTranslation } from "@/src/utils";
 
-
-export default function EditTaskModal() {
-  const router = useRouter();
-  const params = useSearchParams();
-  const isActive = params.get("editTask");
-  const taskId = params.get("taskId")!;
-
+export default function EditWeekTaskModal() {
+    const router = useRouter();
+    const params = useSearchParams();
+    const isActive = params.get("editWeekTask");
+    const taskId = params.get("taskId")!;
+    const [startTime, setStartTime] = useState("")
+    const [endTime, setEndTime] = useState("")
+    const { task, loading, clearTask } = useFetchWeekTaskById(taskId);
+    
 	const handleAction = async(formData: FormData)=> {
 		const data = {
-			name: formData.get('Name'),
+			name: formData.get('Name'), 
 			description: formData.get('Description'),
-			category: formData.get('Categoria')
+			category: formData.get('Categoria'),
+      startTime: startTime,
+      endTime: endTime,
+      day: formData.get('WeekDay')
 		}
-		await EditTask(taskId, data)
-		toast.success('Actualizada correctamente')
+		await EditWeekTask(taskId, data)
     clearTask()
-		router.push('/')
+		toast.success('Actualizada correctamente')
+		router.push('/week')
 	}
-  
-  const { task, loading, clearTask } = useFetchTaskById(taskId);
   const closeModal = () => {
     clearTask()
-    router.push("/");
-  }
+    router.push("/week")
+  };
+
+    const handleStartTime = (e)=> setStartTime(e)
+    const handleEndTime = (e)=> setEndTime(e)
+
+    useEffect(() => {
+      if (task) {
+        setStartTime(task.startTime?.toString() || ""); // Handle potential undefined startTime
+        setEndTime(task.endTime?.toString() || ""); // Handle potential undefined endTime
+      }
+    }, [task])
 
   if (loading) return "Cargando...";
 
@@ -86,6 +104,7 @@ export default function EditTaskModal() {
                   Categoria:{" "}
                 </label>
                 <select
+                  defaultValue={task.category}
                   className="w-full shadow-sm p-4 border-b rounded bg-gray-100 bg-none border-gray-400 outline-none focus:border-b-2 focus:bg-whited/40 transition-colors"
                   name="Categoria"
                 >
@@ -96,6 +115,19 @@ export default function EditTaskModal() {
                     </option>
                   ))}
                 </select>
+                <select
+                className="w-full shadow-sm p-4 border-b rounded bg-gray-100 bg-none border-gray-400 outline-none focus:border-b-2 focus:bg-whited/40 transition-colors"
+                name="WeekDay"
+              >
+                {weekDays.map((day) => (
+                  <option selected={task.day === day.value && true} key={day.value} value={day.value}>
+                    {" "}
+                    {day.name}{" "}
+                  </option>
+                ))}
+              </select>
+                <TimePicker disableClock={true} onChange={handleStartTime}  value={startTime} />
+                <TimePicker disableClock={true} onChange={handleEndTime}  value={endTime} />
                 <input
                   className="w-3/6 font-black mx-auto text-center bg-whited rounded-full shadow-md p-2 py-3 mt-4 uppercase text-sm text-gray-800 hover:cursor-pointer hover:bg-[#CEB094] transition-colors"
                   type="submit"

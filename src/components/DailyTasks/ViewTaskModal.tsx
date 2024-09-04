@@ -8,7 +8,7 @@ import {
 } from "@headlessui/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useFetchTaskById } from "@/src/hooks/useFetchTaskById";
-import { translateCategory } from "@/src/data/category";
+import { translateCategory } from "@/src/utils";
 
 // En base a los params llamamos a nuestra DB
 export default function ViewTaskModal() {
@@ -35,7 +35,7 @@ export default function ViewTaskModal() {
             <Description>
               <div>
                 <h3 className="text-gray-700 font-medium">Descripcion: <span className="text-gray-800 font-bold">{task.description}</span> </h3>
-                <h4 className="text-gray-700 font-medium">Categoria: <span className="text-gray-800 font-bold">{ translateCategory(task.category) }</span></h4>
+                <h4 className="text-gray-700 font-medium">Categoria: <span className="text-gray-800 font-bold">{ translateCategory[task.category] }</span></h4>
               </div>
             </Description>
           </DialogPanel>

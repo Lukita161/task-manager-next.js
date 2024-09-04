@@ -7,7 +7,8 @@ interface WeekTasksI {
     createdBy: Date
     completedAt: Date
     category: string
-    endDate: Date
+    startTime: string
+    endTime: string
     day: string
 }
 
@@ -34,8 +35,11 @@ const WeekTasksSchema : Schema = new Schema({
     category: {
         type: String,
     },
-    endDate: {
-        type: Date,
+    startTime: {
+        type: String
+    },
+    endTime: {
+        type: String,
     },
     day: {
         type: String,

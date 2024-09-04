@@ -15,6 +15,14 @@ export const useFetchTaskById = (taskId: Task["_id"]) => {
   });
   const [loading, setLoading] = useState(false);
 
+  const clearTask = ()=> setTask({
+    _id: "",
+    name: "",
+    description: "",
+    completed: false || true,
+    category: "",
+  })
+
   useEffect(() => {
     const fetchTask = async () => {
       setLoading(true);
@@ -34,5 +42,5 @@ export const useFetchTaskById = (taskId: Task["_id"]) => {
     fetchTask();
     setLoading(false);
   }, [taskId]);
-  return { task, loading };
+  return { task, loading, clearTask };
 };

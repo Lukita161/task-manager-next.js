@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { TaskSchema } from "../schemas"
+import { TaskSchema, WeekTaskSchema, WeekTasksSchema } from "../schemas"
 
 export type CredetialsUserType = {
     email: string,
@@ -7,3 +7,6 @@ export type CredetialsUserType = {
 }
 
 export type Task = z.infer<typeof TaskSchema>
+
+export type WeekTask = z.infer<typeof WeekTaskSchema>
+export type WeekTasks = z.infer<typeof WeekTasksSchema>

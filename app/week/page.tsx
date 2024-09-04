@@ -1,8 +1,13 @@
 
 
+
 import { NavMenu } from "@/src/components/NavMenu";
+import { FloatingButton } from "@/src/components/UI/FloatingButton";
 import CreateNewWeekTask from "@/src/components/WeekTasks/CreateNewWeekTask";
-import { CreateNewWeekTaskButton } from "@/src/components/WeekTasks/CreateNewWeekTaskButton";
+import DeleteWeekTaskModal from "@/src/components/WeekTasks/DeleteWeekTask";
+import EditWeekTaskModal from "@/src/components/WeekTasks/EditWeekTasksModal";
+import ViewWeekTaskmodal from "@/src/components/WeekTasks/ViewWeekTaskModal";
+import { WeekTasksList } from "@/src/components/WeekTasks/WeekTasksList";
 import { getWeekTasks } from "@/src/logic/fetchFunctionForWeekTasks";
 
 export default async function WeekPage() {
@@ -10,27 +15,18 @@ export default async function WeekPage() {
   return (
     <>
     <div className="flex">
-    <header>
+    <header className="sticky">
       <NavMenu />
     </header>
-   <CreateNewWeekTaskButton />
-    <table>
-      <thead>
-        <tr>
-          <th>Lunes</th>
-          <th>Martes</th>
-          <th>Miercoles</th>
-					<th>Jueves</th>
-					<th>Viernes</th>
-					<th>Sabado</th>
-					<th>Domingo</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+    <section className="ml-6 rounded-md">
+      <WeekTasksList tasks={weekTasks!} />
+    </section>
     </div>
     <CreateNewWeekTask />
+    <ViewWeekTaskmodal />
+    <DeleteWeekTaskModal />
+    <EditWeekTaskModal />
+    <FloatingButton />
     </>
   );
 }

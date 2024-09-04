@@ -28,7 +28,9 @@ export const CreateWeekTaskFormSchema = z.object({
     name: z.string().min(1, {message: 'El nombre no puede estar vacio'}),
     description: z.string().min(1, {message: 'La descripcion es obligatoria'}),
     category: z.string().toLowerCase(),
-    day: z.string().toLowerCase()
+    day: z.string().toLowerCase(),
+    startTime: z.string().min(1, {message: "La hora de inicio es obligatoria"}),
+    endTime: z.string().min(1, {message: 'La hora de fin es obligatoria'})
 })
 
 export const TasksSchema = z.array(TaskSchema)
@@ -39,6 +41,8 @@ export const WeekTaskSchema = z.object({
     description: z.string(),
     category: z.string(),
     day: z.string(),
+    startTime: z.string(),
+    endTime: z.string(),
     completed: z.boolean()
 })
 

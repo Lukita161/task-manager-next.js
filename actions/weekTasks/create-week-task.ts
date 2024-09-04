@@ -6,6 +6,7 @@ import { WeekDay } from "@/src/models/WeekDays"
 import WeekTask from "@/src/models/WeekTasks"
 import { CreateWeekTaskFormSchema } from "@/src/schemas"
 import { getServerSession } from "next-auth"
+import { revalidatePath } from "next/cache"
 
 export const createWeekTask = async(data: unknown)=> {
     const serverSession = await getServerSession()
@@ -24,11 +25,14 @@ export const createWeekTask = async(data: unknown)=> {
             description: response.data.description,
             category: response.data.category,
             day: response.data.day,
+            startTime: response.data.startTime,
+            endTime: response.data.endTime,
             createdBy: user._id
         })
         const day = await WeekDay.findOne({day: newTask.day})
         day.tasks.push(newTask._id)
         day.save()
+        revalidatePath("/week")
     } catch (error) {
         console.log(error)
     }
