@@ -25,11 +25,12 @@ export const WeekTasksList = ({ tasks }: WeekTasksListProps) => {
   }, dayGroupsTasks);
 
   return (
-    <>
-      <h1 className="text-3xl font-black text-gray-800 mt-6 mb-10">
+    <section className="flex flex-col mt-5">
+      <h1 className="text-3xl font-black mb-6 text-gray-800">
         Tareas de la semana:{" "}
       </h1>
-      <div className="flex gap-5 overflow-x-scroll h-full max-h-screen 2xl:overflow-auto shadow-md pb-32">
+      <div className="flex gap-5 h-full 2xl:overflow-auto shadow-md pb-32">
+      
         {Object.entries(dayTasks).map(([day, tasks]) => (
           <>
             <div key={day} className="min-w-[200px] 2xl:min-w-0 2xl:w-1/5 ">
@@ -53,6 +54,6 @@ export const WeekTasksList = ({ tasks }: WeekTasksListProps) => {
           </>
         ))}
       </div>
-    </>
+    </section>
   );
 };

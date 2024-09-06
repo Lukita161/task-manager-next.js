@@ -6,7 +6,7 @@ type WeekTaskCardProps = {
 };
 export const WeekTaskCard = ({ task }: WeekTaskCardProps) => {
   return (
-    <div className="p-5 h-full flex gap-2 bg-whited rounded-lg border border-gray-300 shadow">
+    <div className="p-5 h-full flex gap-2 bg-whited rounded-lg border border-gray-300 shadow hover:bg-[#D9B99A] hover:shadow-lg transition-colors">
       <div className="flex flex-col justify-center text-gray-600">
         <h2 className="text-xs mr-2">{task.startTime}</h2>
         <p className="text-xs mr-2">hasta</p>

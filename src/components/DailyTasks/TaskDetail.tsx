@@ -26,7 +26,7 @@ export const TaskDetail = ({ task }: { task: Task }) => {
         defaultChecked={task.completed}
         onChange={handleChange}
         type="checkbox"
-        className="ml-2 mr-2 w-4 h-4"
+        className="ml-2 mr-2 w-4 h-4 checked:bg-blue-400"
       />
       <div className="flex w-full justify-between items-center">
         <div className="flex flex-col">

@@ -2,6 +2,7 @@
 
 
 import { NavMenu } from "@/src/components/NavMenu";
+import SettingsModal from "@/src/components/SettingsModal";
 import { FloatingButton } from "@/src/components/UI/FloatingButton";
 import CreateNewWeekTask from "@/src/components/WeekTasks/CreateNewWeekTask";
 import DeleteWeekTaskModal from "@/src/components/WeekTasks/DeleteWeekTask";
@@ -14,11 +15,11 @@ export default async function WeekPage() {
   const weekTasks = await getWeekTasks()
   return (
     <>
-    <div className="flex">
+    <div className="flex mt-0">
     <header className="sticky">
       <NavMenu />
     </header>
-    <section className="ml-6 rounded-md">
+    <section className="overflow-x-scroll ml-6 rounded-md">
       <WeekTasksList tasks={weekTasks!} />
     </section>
     </div>
@@ -26,6 +27,7 @@ export default async function WeekPage() {
     <ViewWeekTaskmodal />
     <DeleteWeekTaskModal />
     <EditWeekTaskModal />
+    <SettingsModal />
     <FloatingButton />
     </>
   );

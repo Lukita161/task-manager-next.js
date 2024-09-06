@@ -5,12 +5,11 @@ import EditTaskModal from "@/src/components/DailyTasks/EditTaskModal";
 import { TaskDetail } from "@/src/components/DailyTasks/TaskDetail";
 import ViewTaskModal from "@/src/components/DailyTasks/ViewTaskModal";
 import { FloatingButton } from "@/src/components/UI/FloatingButton";
-import { createWeekdays, getTaskByUser } from "@/src/logic/fetchFunctions";
+import { getTaskByUser } from "@/src/logic/fetchFunctions";
+import SettingsModal from "@/src/components/SettingsModal";
 
 export default async function Home() {
   const tasks = await getTaskByUser();
-
-  //await createWeekdays()
 
   return (
     <>
@@ -36,6 +35,7 @@ export default async function Home() {
       <ViewTaskModal />
       <EditTaskModal />
       <DeleteTaskModal />
+      <SettingsModal />
     </>
   );
 }

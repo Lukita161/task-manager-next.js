@@ -63,6 +63,7 @@ export default function CreateTaskModal() {
                         <option key={category.value} value={category.value}> {category.name} </option>
                       ))}
                     </select>
+                    
                     <input className="w-3/6 font-black mx-auto text-center bg-whited rounded-full shadow-md p-2 py-3 mt-4 uppercase text-sm text-gray-800 hover:cursor-pointer hover:bg-[#CEB094] transition-colors" type="submit" value="Crear tarea" />
                 </form>
           </DialogPanel>
