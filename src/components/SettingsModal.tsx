@@ -2,8 +2,10 @@
 
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
+import { signOut } from "next-auth/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function SettingsModal() {
   const [darkMode, setDarkMode] = useState(false);
@@ -20,6 +22,10 @@ export default function SettingsModal() {
     setDarkMode(!darkMode);
     document.documentElement.classList.toggle("dark");
   };
+  const handleSignOut = ()=> {
+    toast.success('Cerrando sesión')
+    signOut({callbackUrl: '/auth/login'})
+  }
 
   return (
     <>
@@ -43,7 +49,7 @@ export default function SettingsModal() {
               </button>
             </div>
             <div className="flex gap-4">
-              <h2 className="w-full bg-red-500 text-center rounded-md px-2 py-1 font-bold capitalize text-white cursor-pointer hover:bg-red-600">Cerrar sesion</h2>
+              <h2 onClick={handleSignOut} className="w-full bg-red-500 text-center rounded-md px-2 py-1 font-bold capitalize text-white cursor-pointer hover:bg-red-600">Cerrar sesion</h2>
             </div>
           </DialogPanel>
         </div>

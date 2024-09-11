@@ -6,6 +6,11 @@ export type CredetialsUserType = {
     password: string
 }
 
+export type UserType = {
+    email: string,
+    name: string
+}
+
 export type Task = z.infer<typeof TaskSchema>
 
 export type WeekTask = z.infer<typeof WeekTaskSchema>

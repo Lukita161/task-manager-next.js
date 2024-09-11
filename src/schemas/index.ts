@@ -1,5 +1,21 @@
 import { z } from "zod";
 
+export const UserSchema = z.object({
+    name: z.string(),
+    email: z.string()
+})
+
+export const ChangeUserSchema = z.object({
+    name: z.string().min(1, {message: "El nombre es obligatorio"}),
+    email: z.string().min(1, {message: "El email es obligatorio"}).email({message: 'Email no valido'})
+})
+
+export const ChangePasswordSchema = z.object({
+    currentPassword: z.string().min(1, {message: 'La contraseña es obligatoria'}),
+    newPassword: z.string().min(1, {message: 'La nueva contraseña es obligatoria'}),
+    confirmedPassword: z.string().min(1, {message: 'La confirmacion es obligatoria'})
+}).refine(data => data.newPassword === data.confirmedPassword, {message: 'Las contraseñas deben ser iguales'})
+
 export const RegisterUserSchema = z.object({
     name: z.string().min(1, {message: 'El nombre es obligatorio'}),
     email: z.string().email({message: 'El email es obligatorio'}),

@@ -29,6 +29,7 @@ export const GET = async(req: NextRequest)=> {
 
         const userEmail = authorizationHeader.get('authorization')?.split(' ')[1]
         const userInfo = await User.findOne({email: userEmail})
+        console.log(userInfo)
         if (!userInfo) {
             return new Response('User not found', { status: 404 });
           }
