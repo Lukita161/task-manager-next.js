@@ -1,11 +1,11 @@
 "use server"
 
-import bcrypt from "bcrypt"
 import connectDb from "@/src/db"
 import User from "@/src/models/User"
 import { RegisterUserSchema } from "@/src/schemas"
 import { generateRandomToken } from "@/src/utils"
 import { hashPassword } from "@/src/logic/password"
+import { sendMail } from "@/src/lib/Nodemailer"
 
 export const registerUser = async(data:unknown)=> {
     try {
@@ -24,6 +24,10 @@ export const registerUser = async(data:unknown)=> {
             password: hashedPassword,
             token
         })
+        await sendMail({
+            name: result.data.name,
+            email: result.data.email
+        }, token)
     } catch (error) {
         return
     }

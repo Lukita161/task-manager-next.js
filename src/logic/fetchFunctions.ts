@@ -19,7 +19,7 @@ export const getTaskByUser = async()=> {
                 'Authorization': `Bearer ${email}`
             }
         }
-        const tasks = await axios(`http://localhost:3000/tasks/api`, config)
+        const tasks = await axios(`${process.env.FRONTEND_URL}/tasks/api`, config)
         const response = TasksSchema.safeParse(tasks.data)
         if(response.success) {
             return response.data
@@ -41,7 +41,7 @@ export const getTaskbyId = async(taskId: Task['_id'])=> {
                 'Authorization': `Bearer ${email}`
             }
         }
-        const url = `http://localhost:3000/tasks/searchTask/api?taskId=${taskId}`
+        const url = `${process.env.FRONTEND_URL}/tasks/searchTask/api?taskId=${taskId}`
         const { data } = await axios(url, config)
         const response = TaskSchema.safeParse(data)
         if(response.success) {

@@ -29,15 +29,15 @@ export const useFetchWeekTaskById = (taskId: Task["_id"]) => {
           const response = WeekTaskSchema.safeParse(task);
           if (response.success) {
             setTask(response.data);
-            setLoading(false);
           } 
         }
       } catch {
         console.log("Algo esta mal");
+      } finally {
+        setLoading(false)
       }
     };
     fetchWeekTask();
-    setLoading(false);
   }, [taskId]);
   return { task, loading, clearTask };
 };

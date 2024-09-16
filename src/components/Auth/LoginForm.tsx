@@ -3,7 +3,8 @@
 
 import { toast } from "react-toastify"
 import { signIn } from 'next-auth/react'
-import { sign } from "crypto"
+import { EnvelopeIcon } from "@heroicons/react/24/outline"
+import {Input} from "@nextui-org/input";
 import { useRouter } from "next/navigation"
 
 export const LoginForm = ()=> {
@@ -24,21 +25,21 @@ export const LoginForm = ()=> {
   }
 
     return (
-        <form action={handleAction} className="w-full h-full flex flex-col gap-5 justify-center">
+        <form action={handleAction} className="w-full flex flex-col gap-5 justify-center">
 			<div className="flex flex-col gap-1 justify-center">
-        <label className="font-medium text-lg text-gray-700" htmlFor="email">
+        <label className="font-medium text-gray-700" htmlFor="email">
           Email:{" "}
         </label>
-        <input className="p-4 border rounded-md border-gray-300 focus:bg-gray-100 focus:border-b-2 focus:outline-none" name="email" type="text" placeholder="Email..." />
+        <input className="p-3 border rounded-md bg-gray-800/20 border-gray-600 focus:border-gray-300 focus:outline-none placeholder:text-gray-500 transition-colors" name="email" type="text" placeholder="Email..."  />
       </div>
       <div className="flex flex-col  gap-1">
-        <label className="font-medium text-lg text-gray-700" htmlFor="password">
+        <label className="font-medium text-gray-700" htmlFor="password">
           Contraseña:{" "}
         </label>
-        <input className="p-4 border rounded-md border-gray-300 focus:bg-gray-100 focus:border-b-2 focus:outline-none" name="password" type="text" placeholder="123456789..." />
+        <input className="p-3 border rounded-md bg-gray-800/20 border-gray-600 focus:border-gray-300 focus:outline-none placeholder:text-gray-500 transition-colors" name="password" type="password" placeholder="123456789..." />
       </div>
 			<div className="flex flex-col text-center">
-				<input className="w-[80%] mt-2 mx-auto p-3 rounded-md bg-terciary text-white uppercase hover:cursor-pointer hover:bg-terciary/80 transition-colors" type="submit" value="Iniciar sesion" />
+				<input className="w-full mt-2 mx-auto p-3 rounded-md bg-secundary text-gray-900 font-black uppercase hover:cursor-pointer hover:bg-[#6f7180] transition-colors" type="submit" value="Iniciar sesion" />
 			</div>
     </form>
     )

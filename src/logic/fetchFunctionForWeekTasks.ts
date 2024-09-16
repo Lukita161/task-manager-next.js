@@ -17,7 +17,7 @@ export const getWeekTasks = async()=> {
                 'Authorization': `Bearer ${email}`
             }
         }
-        const { data } = await axios(`http://localhost:3000/week/api`, config)
+        const { data } = await axios(`${process.env.FRONTEND_URL}/week/api`, config)
         const response = WeekTasksSchema.safeParse(data)
         if(response.success) {
             return response.data
@@ -39,7 +39,7 @@ export const getWeekTaskById = async(taskId: Task['_id']) => {
                 'Authorization': `Bearer ${email}`
             }
         }
-        const url = `http://localhost:3000/week/searchWeekTask/api?taskId=${taskId}`
+        const url = `${process.env.FRONTEND_URL}/week/searchWeekTask/api?taskId=${taskId}`
         const { data } = await axios(url, config)
         const result = WeekTaskSchema.safeParse(data)
         if(result.success) {

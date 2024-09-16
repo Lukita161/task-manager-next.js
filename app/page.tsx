@@ -11,7 +11,7 @@ import SettingsModal from "@/src/components/SettingsModal";
 export default async function Home() {
   const tasks = await getTaskByUser();
 
-  return (
+  if(tasks) return (
     <>
       <div className="flex">
         <header>
@@ -37,5 +37,5 @@ export default async function Home() {
       <DeleteTaskModal />
       <SettingsModal />
     </>
-  );
+  )
 }

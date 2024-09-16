@@ -32,15 +32,15 @@ export const useFetchTaskById = (taskId: Task["_id"]) => {
           const response = TaskSchema.safeParse(task);
           if (response.success) {
             setTask(response.data);
-            setLoading(false);
           } 
         } else return
       } catch {
         console.log("Algo esta mal");
+      } finally {
+        setLoading(false)
       }
     };
     fetchTask();
-    setLoading(false);
   }, [taskId]);
   return { task, loading, clearTask };
 };

@@ -19,7 +19,7 @@ export default async function WeekPage() {
     <header className="sticky">
       <NavMenu />
     </header>
-    <section className="overflow-x-scroll ml-6 rounded-md">
+    <section className="overflow-x-scroll ml-6 rounded-md ">
       <WeekTasksList tasks={weekTasks!} />
     </section>
     </div>

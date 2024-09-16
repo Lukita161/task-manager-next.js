@@ -19,7 +19,6 @@ export default function CreateTaskPage() {
             description: formData.get('Description')
         }
         const response = CreateTasksFormSchema.safeParse(data)
-        console.log(response)
         if(!response.success) {
             response.error.issues.forEach(issue => {
                 toast.error(issue.message)

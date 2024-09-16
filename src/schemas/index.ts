@@ -6,8 +6,9 @@ export const UserSchema = z.object({
 })
 
 export const ChangeUserSchema = z.object({
-    name: z.string().min(1, {message: "El nombre es obligatorio"}),
-    email: z.string().min(1, {message: "El email es obligatorio"}).email({message: 'Email no valido'})
+    name: z.string().min(1, {message: "El nombre es obligatorio"}).optional(),
+    email: z.string().min(1, {message: "El email es obligatorio"}).email({message: 'Email no valido'}).optional(),
+    image: z.string().optional()
 })
 
 export const ChangePasswordSchema = z.object({

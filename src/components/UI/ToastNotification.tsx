@@ -5,6 +5,6 @@ import 'react-toastify/ReactToastify.css'
 
 export const ToastNotification = ()=> {
     return (
-        <ToastContainer limit={2} pauseOnHover={false} />
+        <ToastContainer limit={3} pauseOnHover={false} />
     )
 }

@@ -16,6 +16,7 @@ import { useFetchWeekTaskById } from "@/src/hooks/useFetchWeekTaskById";
 import { useEffect, useState } from "react";
 import { weekDays } from "@/src/data/weekDays";
 import { dayTranslation } from "@/src/utils";
+import { Spinner } from "../UI/Spinner";
 
 export default function EditWeekTaskModal() {
     const router = useRouter();
@@ -55,7 +56,7 @@ export default function EditWeekTaskModal() {
       }
     }, [task])
 
-  if (loading) return "Cargando...";
+  if (loading) return <Spinner/>;
 
   if (task)
     return (

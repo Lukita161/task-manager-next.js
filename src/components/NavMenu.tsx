@@ -5,7 +5,6 @@ import { CalendarDaysIcon } from "@heroicons/react/24/outline"
 import { Cog8ToothIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { useState } from "react"
 import { ProfileButton } from "./UI/ProfileButton"
 
 export const NavMenu = ()=> {

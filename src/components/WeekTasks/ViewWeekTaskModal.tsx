@@ -14,6 +14,7 @@ import { updateWeekTaskStatus } from "@/actions/weekTasks/update-week-task-statu
 import { toast } from "react-toastify";
 import { useMemo, useState } from "react";
 import { Task } from "@/src/types";
+import { Spinner } from "../UI/Spinner";
 
 // En base a los params llamamos a nuestra DB
 export default function ViewWeekTaskmodal() {
@@ -36,7 +37,7 @@ export default function ViewWeekTaskmodal() {
   }
   const isCompleted = useMemo(()=> completed,[completed])
 
-  if (loading) return "Cargando...";
+  if (loading) return <Spinner/>;
   const closeModal = () => router.push("/week");
 
   if (task)

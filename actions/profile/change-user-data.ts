@@ -21,6 +21,7 @@ export const ChangeUserData = async(data: unknown, email: UserType['email'])=> {
         }
         user.email = response.data.email
         user.name = response.data.name
+        user.image = response.data.image
         await user.save()
     } catch (error) {
         console.error(error)

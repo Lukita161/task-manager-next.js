@@ -9,6 +9,7 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 import { useFetchTaskById } from "@/src/hooks/useFetchTaskById";
 import { translateCategory } from "@/src/utils";
+import { Spinner } from "../UI/Spinner";
 
 // En base a los params llamamos a nuestra DB
 export default function ViewTaskModal() {
@@ -19,7 +20,7 @@ export default function ViewTaskModal() {
 
   const { task, loading } = useFetchTaskById(taskId)
 
-  if(loading) return 'Cargando...'
+  if(loading) return <Spinner/>
 	const closeModal = ()=> router.push('/')
 
   if(task) return (

@@ -11,6 +11,7 @@ import { category } from "@/src/data/category";
 import { useFetchTaskById } from "@/src/hooks/useFetchTaskById";
 import { EditTask } from "@/actions/tasks/edit-task";
 import { toast } from "react-toastify";
+import { Spinner } from "../UI/Spinner";
 
 
 export default function EditTaskModal() {
@@ -37,7 +38,7 @@ export default function EditTaskModal() {
     router.push("/");
   }
 
-  if (loading) return "Cargando...";
+  if (loading) return <Spinner />;
 
   if (task)
     return (

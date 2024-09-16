@@ -7,6 +7,7 @@ interface UserI {
     password: string,
     token: string
 }
+const defaultLogoUrl = 'https://res.cloudinary.com/decvyyzsl/image/upload/v1726183326/v8ulchu7ub5lrjo5g0he.jpg'
 
 const UserSchema : Schema = new Schema({
     name: {
@@ -29,6 +30,10 @@ const UserSchema : Schema = new Schema({
     confirmed: {
         type: Boolean,
         default: false
+    },
+    image: {
+        type: String,
+        default: defaultLogoUrl.toString()
     },
     tasks: [
         {

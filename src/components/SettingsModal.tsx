@@ -15,8 +15,13 @@ export default function SettingsModal() {
   const isActive = params.get("settings");
 
   const closeModal = () => {
-		if(pathname==='/') router.push('/')
-			else router.push('/week')
+		if(pathname ==='/') {
+      router.push('/')
+    } else if(pathname==='/week') {
+      router.push('/week')
+    } else {
+      router.push('/profile')
+    }
 	};
   const handleClick = () => {
     setDarkMode(!darkMode);
@@ -42,9 +47,9 @@ export default function SettingsModal() {
             <div className="">
               <button onClick={handleClick} className="w-full flex justify-center">
                 {darkMode ? (
-                  <SunIcon className="w-10 h-10 text-center" />
+                  <SunIcon className="w-10 h-10 text-center dark:text-gray-800" />
                 ) : (
-                  <MoonIcon className="w-10 h-10 text-center" />
+                  <MoonIcon className="w-10 h-10 text-center dark:text-gray-800" />
                 )}
               </button>
             </div>

@@ -13,7 +13,7 @@ export const ProfileTab = () => {
           className={`${
             pathname === element.href &&
             "border-b-2 border-b-blue-500 shadow-inner"
-          } p-4 rounded-md shadow font-medium hover:shadow-lg inline-flex gap-2 transition-shadow`}
+          } p-4 rounded-md shadow font-medium hover:shadow-lg inline-flex gap-2 transition-shadow dark:bg-gray-200 dark:text-gray-800`}
           href={element.href}
           key={element.href}
         >
