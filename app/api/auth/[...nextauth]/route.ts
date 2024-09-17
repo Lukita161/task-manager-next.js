@@ -10,12 +10,15 @@ export const authOptions = {
         CredentialsProvider({
             name: 'Credentials',
             credentials: {
-                email: {label: 'email', type: 'text', placeholder: "Ingresa tu email"},
-                password: {label: 'password', type: 'text', placeholder: "Ingresa tu contraseña"}
+                email: {label: 'email', type: 'text', placeholder: "Ingresa tu email", defaultValue: ''},
+                password: {label: 'password', type: 'text', placeholder: "Ingresa tu contraseña", defaultValue: ''}
             },
-            async authorize(credentials: CredetialsUserType, req) {
+            async authorize(credentials) {
                 await connectDb()
                 let user = null
+                if(!credentials) {
+                    throw new Error('Las credenciales son obligatorias')
+                }
                 user = await User.findOne({email: credentials.email})
                 if(!user) {
                     throw new Error('Email no valido')
