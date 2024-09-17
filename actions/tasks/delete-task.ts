@@ -3,7 +3,7 @@
 import connectDb from "@/src/db";
 import DailyTask from "@/src/models/DailyTasks";
 import User from "@/src/models/User";
-import { Task as TaskType } from "@/src/types";
+import { Task, Task as TaskType } from "@/src/types";
 import { revalidatePath } from "next/cache";
 
 export const deleteTask = async(id: TaskType['_id']) => {
@@ -16,7 +16,7 @@ export const deleteTask = async(id: TaskType['_id']) => {
         }
         const user =  await User.findOne({_id: task.createdBy}).select('_id').populate('tasks','_id')
         console.log(user)
-        user.tasks = await user.tasks.filter((taskId) => task._id.toString() !== taskId.id.toString())
+        user.tasks = await user.tasks.filter((taskId: Task) => task._id.toString() !== taskId._id.toString())
         await user.save()
         await task.deleteOne()
         revalidatePath('/')
