@@ -1,7 +1,5 @@
 
 import { NavMenu } from "@/src/components/NavMenu";
-import { useDarkMode } from "@/src/hooks/useDarkMode";
-import { useEffect } from "react";
 
 export default function TaskLayout ({
     children,

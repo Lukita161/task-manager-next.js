@@ -1,10 +1,8 @@
 "use server"
 
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import connectDb from "@/src/db"
 import Task from "@/src/models/DailyTasks"
 import User from "@/src/models/User"
-import { getServerSession } from "next-auth"
 import { NextRequest } from "next/server"
 
 export const POST = async(req: Request)=> {
