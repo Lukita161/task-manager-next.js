@@ -6,6 +6,7 @@ import {
   DialogPanel,
   DialogTitle,
 } from "@headlessui/react";
+
 import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { category } from "@/src/data/category";
 import { weekDays } from "@/src/data/weekDays";
@@ -43,10 +44,10 @@ export default function CreateNewWeekTask() {
     toast.success("Tarea creada correctamente");
     redirect("/week");
   };
-  const onChangeStartTime = (e)=> {
+  const onChangeStartTime = (e:string)=> {
     setStartTime(e)
   }
-  const onChangeEndTime = (e) => {
+  const onChangeEndTime = (e:string) => {
     setEndTime(e)
   }
 
