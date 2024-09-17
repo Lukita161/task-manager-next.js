@@ -13,7 +13,7 @@ export const authOptions = {
                 email: {label: 'email', type: 'text', placeholder: "Ingresa tu email"},
                 password: {label: 'password', type: 'text', placeholder: "Ingresa tu contraseña"}
             },
-            authorize: async(credentials: CredetialsUserType, req) => {
+            async authorize(credentials: CredetialsUserType, req) {
                 await connectDb()
                 let user = null
                 user = await User.findOne({email: credentials.email})
@@ -39,4 +39,4 @@ export const authOptions = {
 
 const handler = NextAuth(authOptions)
 
-export default handler
+export { handler as GET, handler as POST }
