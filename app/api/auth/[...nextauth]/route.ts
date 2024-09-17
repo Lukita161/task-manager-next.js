@@ -4,7 +4,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import connectDb from "@/src/db";
 import { CredetialsUserType } from "@/src/types";
 import User from "@/src/models/User";
-import { connect } from "http2";
 
 export const authOptions = {
     providers: [
@@ -40,4 +39,4 @@ export const authOptions = {
 
 const handler = NextAuth(authOptions)
 
-export { handler as GET, handler as POST } 
+export default handler
