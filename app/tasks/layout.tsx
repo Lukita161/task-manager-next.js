@@ -1,12 +1,14 @@
+
 import { NavMenu } from "@/src/components/NavMenu";
-import { ToastNotification } from "@/src/components/UI/ToastNotification";
-import Link from "next/link";
+import { useDarkMode } from "@/src/hooks/useDarkMode";
+import { useEffect } from "react";
 
 export default function TaskLayout ({
     children,
   }: Readonly<{
     children: React.ReactNode;
   }>)  {
+
     return (
         <>
         <div className="flex min-w-full md:w-screen lg:flex-1">

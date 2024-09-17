@@ -22,9 +22,9 @@ export const ProfileButton = () => {
         <Popover className="relative w-full h-full">
           <PopoverButton className={"w-full h-full outline-none"}></PopoverButton>
           <PopoverPanel anchor="right" className="flex flex-col ml-3 p-3 bg-white rounded-md items-center justify-center text-pretty">
-            <h1 className="text-gray-700">Hola! <span className="font-bold">{userInfo.name}</span></h1>
+            <h1 className="text-gray-700">Bienvenido! <span className="font-bold">{userInfo.name}</span></h1>
             <Link className="dark:text-gray-800" href={'/profile'}>Mi perfil</Link>
-            <button className="text-red-600" onClick={handleClick}>Cerrar sesion</button>
+            <button className="text-red-600 font-bold" onClick={handleClick}>Cerrar sesion</button>
           </PopoverPanel>
         </Popover>
       </div>

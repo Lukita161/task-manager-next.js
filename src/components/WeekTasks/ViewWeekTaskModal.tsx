@@ -22,20 +22,19 @@ export default function ViewWeekTaskmodal() {
   const params = useSearchParams();
   const isActive = params.get("viewWeekTask");
   const taskId = params.get("taskId")!;
-  const [completed, setCompleted] = useState<Task['completed']>()
-
-  const { task, loading } = useFetchWeekTaskById(taskId);
+  
+  const { task, loading, clearTask } = useFetchWeekTaskById(taskId);
   const handleClick = async()=> {
     await updateWeekTaskStatus(taskId)
-    setCompleted(task.completed)
     if(isCompleted) {
-      toast.success('Tarea completada')
-    } else {
       toast.error('Tarea incompleta')
+    } else {
+      toast.success('Tarea completada')
     }
     closeModal()
   }
-  const isCompleted = useMemo(()=> completed,[completed])
+  const isCompleted = useMemo(()=> task.completed,[task])
+  console.log(isCompleted)
 
   if (loading) return <Spinner/>;
   const closeModal = () => router.push("/week");
@@ -83,7 +82,7 @@ export default function ViewWeekTaskmodal() {
                     <p className="text-gray-700 font-medium">Dia asignado: <span className="text-gray-800 font-bold">{dayTranslation[task.day]}</span></p>
                   </div>
                   <div>
-                    <p onClick={handleClick} className={`font-bold text-gray-800 cursor-pointer text-center p-2 rounded-md shadow ${isCompleted ? 'bg-emerald-500/50 hover:bg-emerald-500/75' : 'bg-slate-400/50 opacity-80 hover:bg-slate-400/75'} hover:transition-colors`}>{isCompleted ? 'Marcar completada' : "Marcar incompleta"}</p>
+                    <p onClick={handleClick} className={`font-bold text-gray-800 cursor-pointer text-center p-2 rounded-md shadow ${isCompleted ?  'bg-slate-400/50 opacity-80 hover:bg-slate-400/75' : 'bg-emerald-500/50 hover:bg-emerald-500/75'} hover:transition-colors`}>{isCompleted ? "Marcar incompleta" : 'Marcar completa'}</p>
                   </div>
                 </div>
               </Description>

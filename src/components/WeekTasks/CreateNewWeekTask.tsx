@@ -64,7 +64,7 @@ export default function CreateNewWeekTask() {
             <DialogTitle className="font-black text-gray-800 text-3xl border-b border-gray-300 uppercase text-center">
               Nueva tarea
             </DialogTitle>
-            <form action={handleAction} className="flex flex-col gap-2">
+            <form action={handleAction} className="flex flex-col gap-2 dark:text-gray-800">
               <label className="font-medium text-gray-600" htmlFor="Name">
                 Nombre de la tarea:{" "}
               </label>

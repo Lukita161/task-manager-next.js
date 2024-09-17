@@ -49,7 +49,7 @@ export const ChangePasswordForm = ({ email }: ChangePasswordFormProps) => {
           Contraseña actual:{" "}
         </label>
         <input
-          className="p-2 border border-gray-300 rounded-md outline-none transition-colors focus:border-blue-500 dark:bg-gray-300 dark:border-gray-400"
+          className="p-2 border border-gray-300 rounded-md outline-none transition-colors focus:border-blue-500 dark:text-gray-800 dark:bg-gray-300 dark:border-gray-400"
           type="password"
           name="current-password"
         />
@@ -62,7 +62,7 @@ export const ChangePasswordForm = ({ email }: ChangePasswordFormProps) => {
           Nueva contraseña:{" "}
         </label>
         <input
-          className="p-2 border border-gray-300 rounded-md outline-none transition-colors focus:border-blue-500 dark:bg-gray-300 dark:border-gray-400"
+          className="p-2 border border-gray-300 rounded-md outline-none transition-colors focus:border-blue-500  dark:text-gray-800 dark:bg-gray-300 dark:border-gray-400"
           type="password"
           name="new-password"
         />
@@ -75,7 +75,7 @@ export const ChangePasswordForm = ({ email }: ChangePasswordFormProps) => {
           Confirmar contraseña:{" "}
         </label>
         <input
-          className="p-2 border border-gray-300 rounded-md outline-none transition-colors focus:border-blue-500 dark:bg-gray-300 dark:border-gray-400"
+          className="p-2 border border-gray-300 rounded-md outline-none transition-colors focus:border-blue-500  dark:text-gray-800 dark:bg-gray-300 dark:border-gray-400"
           type="password"
           name="confirm-password"
         />

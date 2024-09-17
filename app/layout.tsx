@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ToastNotification } from "@/src/components/UI/ToastNotification";
-
+import { useDarkMode } from "@/src/hooks/useDarkMode";
+import { useEffect } from "react";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-200 dark:bg-[#191919]/90`}>{children}
+      <body className={`${inter.className} bg-gray-200 dark:bg-[#191919]/90 `}>{children}
         <ToastNotification  />
       </body>
     </html>

@@ -7,10 +7,10 @@ import ViewTaskModal from "@/src/components/DailyTasks/ViewTaskModal";
 import { FloatingButton } from "@/src/components/UI/FloatingButton";
 import { getTaskByUser } from "@/src/logic/fetchFunctions";
 import SettingsModal from "@/src/components/SettingsModal";
+import { useDarkMode } from "@/src/hooks/useDarkMode";
 
 export default async function Home() {
   const tasks = await getTaskByUser();
-
   if(tasks) return (
     <>
       <div className="flex">

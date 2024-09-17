@@ -2,10 +2,11 @@
 
 import { confirmUser } from '@/actions/auth/confirm-user'
 import { PinInput, PinInputField } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 
 export const ConfirmAccountForm = ()=> {
+    const router = useRouter()
     const handleComplete = async(value:string)=> {
 
         const confirmed = await confirmUser(value)
@@ -14,6 +15,7 @@ export const ConfirmAccountForm = ()=> {
             return
         }
         toast.success('Usuario validado')
+        router.push('/auth/login')
     }
     return (
         <div className='space-x-3 text-center flex items-center justify-center'>

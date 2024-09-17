@@ -50,7 +50,7 @@ export default function CreateTaskModal() {
             <Description>
 
             </Description>
-            <form action={handleCreateTask} className="flex flex-col gap-2 ">
+            <form action={handleCreateTask} className="flex flex-col gap-2 dark:text-gray-800">
                     <label className="font-medium text-gray-600" htmlFor="Name">Nombre de la tarea: </label>
                     <input className="w-full mb-6 shadow-sm p-4 border-b rounded bg-gray-100 border-gray-400 outline-none focus:border-b-2 focus:bg-whited/40 transition-colors" type="text" name="Name" placeholder="Nombre tarea" />
 

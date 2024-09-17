@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Task, WeekTask } from "../types";
 import { WeekTaskSchema } from "../schemas";
 import { getWeekTaskById } from "../logic/fetchFunctionForWeekTasks";
+import { revalidatePath } from "next/cache";
 
 export const useFetchWeekTaskById = (taskId: Task["_id"]) => {
   const [task, setTask] = useState({} as WeekTask);
@@ -29,6 +30,7 @@ export const useFetchWeekTaskById = (taskId: Task["_id"]) => {
           const response = WeekTaskSchema.safeParse(task);
           if (response.success) {
             setTask(response.data);
+            revalidatePath('/week')
           } 
         }
       } catch {
@@ -38,6 +40,6 @@ export const useFetchWeekTaskById = (taskId: Task["_id"]) => {
       }
     };
     fetchWeekTask();
-  }, [taskId]);
+  }, [taskId, task.name]);
   return { task, loading, clearTask };
 };
