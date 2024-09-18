@@ -1,6 +1,5 @@
 
 
-
 import { NavMenu } from "@/src/components/NavMenu";
 import SettingsModal from "@/src/components/SettingsModal";
 import { FloatingButton } from "@/src/components/UI/FloatingButton";
@@ -22,7 +21,7 @@ export default async function WeekPage() {
       <NavMenu />
     </header>
     <section className="overflow-x-scroll ml-6 rounded-md ">
-      <WeekTasksList tasks={weekTasks!} />
+      {weekTasks && <WeekTasksList tasks={weekTasks} />}
     </section>
     </div>
     <CreateNewWeekTask />
