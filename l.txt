@@ -1,0 +1,1 @@
+mongodb+srv://caularase:n3CY4D78t5iN60gs@task-manager.5npr6.mongodb.net&ssl=true
