@@ -1,4 +1,3 @@
-"use server"
 
 import { NavMenu } from "@/src/components/NavMenu";
 import SettingsModal from "@/src/components/SettingsModal";
