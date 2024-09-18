@@ -1,4 +1,3 @@
-
 import { NavMenu } from "@/src/components/NavMenu";
 import SettingsModal from "@/src/components/SettingsModal";
 import { FloatingButton } from "@/src/components/UI/FloatingButton";
@@ -9,6 +8,7 @@ import ViewWeekTaskmodal from "@/src/components/WeekTasks/ViewWeekTaskModal";
 import { WeekTasksList } from "@/src/components/WeekTasks/WeekTasksList";
 import { getWeekTasks } from "@/src/logic/fetchFunctionForWeekTasks";
 
+export const dynamic = 'force-dynamic';
 export default async function WeekPage() {
 
   const weekTasks = await getWeekTasks()

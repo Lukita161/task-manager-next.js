@@ -3,7 +3,7 @@
 import connectDb from "@/src/db"
 import User from "@/src/models/User";
 import WeekTask from "@/src/models/WeekTasks";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
 
 export const GET = async(req: NextRequest)=> {
@@ -19,7 +19,7 @@ export const GET = async(req: NextRequest)=> {
             return new Response('User not found', { status: 404 });
           }
         const data = await WeekTask.find({createdBy: userInfo._id}).select('_id name description category completed day startTime endTime').sort({startTime: 'asc'})
-        return NextResponse.json(data)
+        return Response.json(data)
     } catch (error) {
         return Response.json({error: 'Algo ha fallada'}, {status: 500})
     }
