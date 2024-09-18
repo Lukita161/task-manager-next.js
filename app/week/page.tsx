@@ -14,14 +14,14 @@ export default async function WeekPage() {
 
   const weekTasks = await getWeekTasks()
 
-  return (
+  if(weekTasks) return (
     <>
     <div className="flex mt-0">
     <header className="sticky">
       <NavMenu />
     </header>
     <section className="overflow-x-scroll ml-6 rounded-md ">
-      {weekTasks && <WeekTasksList tasks={weekTasks} />}
+      <WeekTasksList tasks={weekTasks} />
     </section>
     </div>
     <CreateNewWeekTask />

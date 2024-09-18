@@ -17,13 +17,13 @@ export const getWeekTasks = async()=> {
                 'Authorization': `Bearer ${email}`
             }
         }
-        const result = await axios(`${process.env.FRONTEND_URL}/week/api`, config)
-        const response = WeekTasksSchema.safeParse(result.data)
+        const {data} = await axios(`${process.env.FRONTEND_URL}/week/api`, config)
+        const response = WeekTasksSchema.safeParse(data)
         if(response.success) {
             return response.data
         }
     } catch (error) {
-        throw new Error('Algo esta mal')
+        console.log(error)
         process.exit(1)
     }
 }
