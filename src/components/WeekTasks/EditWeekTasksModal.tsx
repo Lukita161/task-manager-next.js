@@ -6,6 +6,7 @@ import {
     DialogPanel,
     DialogTitle,
 } from "@headlessui/react";
+import { Value } from "./CreateNewWeekTask";
 import { useRouter, useSearchParams } from "next/navigation";
 import { category } from "@/src/data/category";
 import { EditWeekTask } from "@/actions/weekTasks/edit-week-task";
@@ -46,8 +47,8 @@ export default function EditWeekTaskModal() {
     router.push("/week")
   };
 
-    const handleStartTime = (e)=> setStartTime(e)
-    const handleEndTime = (e)=> setEndTime(e)
+    const handleStartTime = (e:Value)=> setStartTime(String(e))
+    const handleEndTime = (e:Value)=> setEndTime(String(e))
 
     useEffect(() => {
       if (task) {

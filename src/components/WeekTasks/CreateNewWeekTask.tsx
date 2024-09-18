@@ -16,7 +16,7 @@ import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
 import { useState } from "react";
 
-type Value = string | null
+export type Value = string | null
 
 export default function CreateNewWeekTask() {
   const [startTime, setStartTime] = useState('00:00');
