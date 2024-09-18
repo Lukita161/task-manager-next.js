@@ -1,3 +1,5 @@
+"use server"
+
 import connectDb from "@/src/db"
 import User from "@/src/models/User";
 import WeekTask from "@/src/models/WeekTasks";
