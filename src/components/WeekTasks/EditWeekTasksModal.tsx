@@ -1,10 +1,10 @@
 "use client";
 
 import {
-    Description,
-    Dialog,
-    DialogPanel,
-    DialogTitle,
+  Description,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
 } from "@headlessui/react";
 import { Value } from "./CreateNewWeekTask";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -16,7 +16,6 @@ import 'react-time-picker/dist/TimePicker.css';
 import { useFetchWeekTaskById } from "@/src/hooks/useFetchWeekTaskById";
 import { useEffect, useState } from "react";
 import { weekDays } from "@/src/data/weekDays";
-import { dayTranslation } from "@/src/utils";
 import { Spinner } from "../UI/Spinner";
 
 export default function EditWeekTaskModal() {
