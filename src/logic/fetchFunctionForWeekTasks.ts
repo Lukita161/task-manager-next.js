@@ -1,6 +1,6 @@
 "use server"
 
-import axios from "axios"
+import axios, { isAxiosError } from "axios"
 import { getServerSession } from "next-auth"
 import { WeekTaskSchema, WeekTasksSchema } from "../schemas"
 import { Task } from "../types"
@@ -17,13 +17,14 @@ export const getWeekTasks = async()=> {
                 'Authorization': `Bearer ${email}`
             }
         }
-        const { data } = await axios(`${process.env.FRONTEND_URL}/week/api`, config)
-        const response = WeekTasksSchema.safeParse(data)
+        const result = await axios(`${process.env.FRONTEND_URL}/week/api`, config)
+        const response = WeekTasksSchema.safeParse(result.data)
         if(response.success) {
             return response.data
         }
     } catch (error) {
-        console.log(error)
+        throw new Error('Algo esta mal')
+        process.exit(1)
     }
 }
 

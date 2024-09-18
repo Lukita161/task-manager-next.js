@@ -12,7 +12,9 @@ import { WeekTasksList } from "@/src/components/WeekTasks/WeekTasksList";
 import { getWeekTasks } from "@/src/logic/fetchFunctionForWeekTasks";
 
 export default async function WeekPage() {
+
   const weekTasks = await getWeekTasks()
+
   return (
     <>
     <div className="flex mt-0">

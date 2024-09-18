@@ -31,7 +31,7 @@ export const WeekTasksList = ({ tasks }: WeekTasksListProps) => {
       </h1>
       <div className="flex gap-5 h-full 2xl:overflow-auto pb-32">
       
-        {Object.entries(dayTasks).map(([day, tasks]) => (
+        {Object?.entries(dayTasks)?.map(([day, tasks]) => (
           <>
             <div key={day} className="min-w-[200px] 2xl:min-w-0 2xl:w-1/5 ">
               <h3
