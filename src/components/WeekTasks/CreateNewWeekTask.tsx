@@ -1,21 +1,22 @@
 "use client";
 
 import {
-  Description,
   Dialog,
   DialogPanel,
-  DialogTitle,
+  DialogTitle
 } from "@headlessui/react";
-
+import type Value from 'react-time-picker';
 import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { category } from "@/src/data/category";
 import { weekDays } from "@/src/data/weekDays";
 import { createWeekTask } from "@/actions/weekTasks/create-week-task";
 import { toast } from "react-toastify";
-import TimePicker from 'react-time-picker'
+import TimePicker from 'react-time-picker';
 import 'react-time-picker/dist/TimePicker.css';
 import 'react-clock/dist/Clock.css';
 import { useState } from "react";
+
+type Value = string | null
 
 export default function CreateNewWeekTask() {
   const [startTime, setStartTime] = useState('00:00');
@@ -44,11 +45,11 @@ export default function CreateNewWeekTask() {
     toast.success("Tarea creada correctamente");
     redirect("/week");
   };
-  const onChangeStartTime = (e:string)=> {
-    setStartTime(e)
+  const onChangeStartTime = (e: Value)=> {
+    setStartTime(String(e))
   }
-  const onChangeEndTime = (e:string) => {
-    setEndTime(e)
+  const onChangeEndTime = (e: Value) => {
+    setEndTime(String(e))
   }
 
   return (
