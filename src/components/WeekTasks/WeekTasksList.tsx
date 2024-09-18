@@ -18,7 +18,7 @@ const dayGroupsTasks: GroupedTasks = {
 };
 
 export const WeekTasksList = ({ tasks }: WeekTasksListProps) => {
-  const dayTasks = tasks.reduce((acc, task) => {
+  const dayTasks = tasks?.reduce((acc, task) => {
     let currentGroup = acc[task.day] ? [...acc[task.day]] : [];
     currentGroup = [...currentGroup, task];
     return { ...acc, [task.day]: currentGroup };
