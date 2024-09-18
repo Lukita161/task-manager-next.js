@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth"
 import { WeekTaskSchema, WeekTasksSchema } from "../schemas"
 import { Task } from "../types"
 
+//export const dynamic = 'force-dynamic';
 export const getWeekTasks = async()=> {
     try {
         const session = await getServerSession()
@@ -24,7 +25,6 @@ export const getWeekTasks = async()=> {
         }
     } catch (error) {
         console.log(error)
-        process.exit(1)
     }
 }
 

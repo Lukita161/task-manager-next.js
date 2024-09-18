@@ -1,10 +1,12 @@
+"use server"
+
 import connectDb from "@/src/db"
 import User from "@/src/models/User";
 import WeekTask from "@/src/models/WeekTasks";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const dynamic = 'force-dynamic';
-export const GET = async(req: Request)=> {
+
+export const GET = async(req: NextRequest)=> {
     await connectDb()
     try {
         const authorizationHeader = req.headers;
