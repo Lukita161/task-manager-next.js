@@ -4,7 +4,6 @@ import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 import { signOut } from "next-auth/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
 import { toast } from "react-toastify";
 import { useDarkMode } from "../hooks/useDarkMode";
 
