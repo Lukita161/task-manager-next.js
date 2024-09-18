@@ -8,6 +8,7 @@ import { FloatingButton } from "@/src/components/UI/FloatingButton";
 import { getTaskByUser } from "@/src/logic/fetchFunctions";
 import SettingsModal from "@/src/components/SettingsModal";
 
+export const dynamic = 'force-dynamic';
 export default async function Home() {
   const tasks = await getTaskByUser();
   if(tasks) return (
