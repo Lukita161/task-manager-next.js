@@ -1,6 +1,6 @@
 "use server"
 
-import axios, { isAxiosError } from "axios"
+import axios from "axios"
 import { getServerSession } from "next-auth"
 import { WeekTaskSchema, WeekTasksSchema } from "../schemas"
 import { Task } from "../types"

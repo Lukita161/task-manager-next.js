@@ -17,9 +17,9 @@ export default async function WeekPage() {
   if(weekTasks) return (
     <>
     <div className="flex mt-0">
-    <header className="sticky">
+    <div className="sticky">
       <NavMenu />
-    </header>
+    </div>
     <section className="overflow-x-scroll ml-6 rounded-md ">
       <WeekTasksList tasks={weekTasks} />
     </section>

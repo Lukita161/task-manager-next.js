@@ -13,9 +13,9 @@ export default async function Home() {
   if(tasks) return (
     <>
       <div className="flex">
-        <header>
+        <div>
           <NavMenu />
-        </header>
+        </div>
         {tasks?.length ? (
           <section className="mx-auto my-auto overflow-y-auto h-[34rem] w-8/12 shadow-2xl rounded-lg bg-[#d9c5b2] dark:bg-[#5c5c5c] dark:shadow-none p-6">
             <h1 className="text-3xl font-black text-terciary text-center mb-4 dark:text-whited">

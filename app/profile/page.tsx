@@ -1,5 +1,6 @@
+"use client"
+
 import { ProfileForm } from "@/src/components/Profile/ProfileForm";
-import { ProfileTab } from "@/src/components/Profile/Tab";
 import SettingsModal from "@/src/components/SettingsModal";
 
 
